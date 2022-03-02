@@ -21,6 +21,6 @@ public class TreasureChest implements Tankable {
 
     public String status(){
         return "Treasure Chest"
-             + " - the lid is " + (isClosed()?"closed":"open");
+             + " - its lid is " + (isClosed()?"closed":"open");
     }
 }

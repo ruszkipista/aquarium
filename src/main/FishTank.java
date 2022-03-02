@@ -32,7 +32,7 @@ public class FishTank {
 
     public int getNumberOfFish(){
         int numberOfFish = 0;
-        for (Tankable item : this.content)
+        for (Tankable item : content)
             if (isFish(item)) numberOfFish++;
         return numberOfFish;
     }
@@ -42,23 +42,23 @@ public class FishTank {
     }
 
     public void removeFish(){
-        for (Iterator<Tankable> iterator = this.content.iterator(); iterator.hasNext(); ) {
+        for (Iterator<Tankable> iterator = content.iterator(); iterator.hasNext(); ) {
             Tankable item = iterator.next();
             if (isFish(item))
-                if (((Fish)item).getWeightInGram() >= this.bigFishLimitInGram)
+                if (((Fish)item).getWeightInGram() >= bigFishLimitInGram)
                     iterator.remove();
         }
     }
 
     public void feed(){
-        for (Tankable item : this.content)
+        for (Tankable item : content)
             if (Feedable.class.isInstance(item))
                 ((Feedable)item).feed();
     }
 
     public String getStatus(){
         String status="";
-        for (Tankable item : this.content)
+        for (Tankable item : content)
             status += item.status() + "\n";
         return status;
     }

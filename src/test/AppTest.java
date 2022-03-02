@@ -97,7 +97,7 @@ public class AppTest {
         tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
         assertEquals("Small, weight: 1, color: red\n"
                     +"Big, weight: 14, color: blue\n"
-                    +"Treasure Chest - the lid is open\n",
+                    +"Treasure Chest - its lid is open\n",
                      tank.getStatus());
     }
 
