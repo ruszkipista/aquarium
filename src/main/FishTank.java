@@ -8,7 +8,7 @@ public class FishTank {
     private int volumeInLiter;
     private double bigFishLimitInGram;
 
-    private List<Fish> fishes = new ArrayList<>();
+    private List<Tankable> content = new ArrayList<>();
 
     public FishTank(int volumeInLiter, double bigFishLimitInGram){
         this.volumeInLiter = volumeInLiter;
@@ -23,24 +23,25 @@ public class FishTank {
     }
 
     public void addFish(Fish fish){
-        this.fishes.add(fish);
+        this.content.add(fish);
     }
 
     public int getNumberOfFish(){
-        return this.fishes.size();
+        return this.content.size();
     }
 
     public void removeFish(){
-        for (Iterator<Fish> iterator = this.fishes.iterator(); iterator.hasNext(); ) {
-            Fish fish = iterator.next();
-            if (fish.getWeightInGram() >= this.bigFishLimitInGram)
-                iterator.remove();
+        for (Iterator<Tankable> iterator = this.content.iterator(); iterator.hasNext(); ) {
+            Tankable item = iterator.next();
+            if (Fish.class.isInstance(item))
+                if (((Fish)item).getWeightInGram() >= this.bigFishLimitInGram)
+                    iterator.remove();
         }
     }
 
     public void feed(){
-        for (Fish fish : this.fishes){
-            fish.feed();
-        }
+        for (Tankable item : this.content)
+            if (Feedable.class.isInstance(item))
+                ((Feedable)item).feed();
     }
 }
