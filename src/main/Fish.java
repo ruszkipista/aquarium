@@ -27,8 +27,8 @@ public abstract class Fish implements Feedable, Tankable {
     @Override
     public String status(){
         return this.getName()
-             + ", weight: "  + Math.round(getWeightInGram())
-             + ", color: "   + getColor();
+             + ", weight: " + Math.round(getWeightInGram())
+             + ", color: "  + getColor();
     }
 
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import main.Fish;
 import main.FishTank;
+import main.Kong;
 import main.TreasureChest;
 
 public class AppTest {
@@ -80,5 +81,15 @@ public class AppTest {
                     +"Big, weight: 14, color: blue\n"
                     +"Treasure Chest - the lid is open\n",
                      tank.getStatus());
+    }
+
+    @Test
+    public void testKongWeightGainAfterTwoFeeding(){
+        Kong kong = new Kong("KingKong", 3, "red");
+        assertEquals(3, kong.getWeightInGram(), 0);
+        kong.feed();
+        assertEquals(5, kong.getWeightInGram(), 0);
+        kong.feed();
+        assertEquals("KingKong, weight: 7, color: red", kong.status());
     }
 }
