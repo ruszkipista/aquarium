@@ -3,6 +3,7 @@ package test;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+import main.Clown;
 import main.Fish;
 import main.FishTank;
 import main.Kong;
@@ -91,5 +92,16 @@ public class AppTest {
         assertEquals(5, kong.getWeightInGram(), 0);
         kong.feed();
         assertEquals("KingKong, weight: 7, color: red", kong.status());
+    }
+
+    @Test
+    public void testClownWeightGainAfterTwoFeeding(){
+        Clown clown = new Clown("Clownfish", 2, "orange", "white");
+        assertEquals(2, clown.getWeightInGram(), 0);
+        clown.feed();
+        assertEquals(3, clown.getWeightInGram(), 0);
+        clown.feed();
+        assertEquals("Clownfish, weight: 4, color: orange with white stripes",
+                      clown.status());
     }
 }
