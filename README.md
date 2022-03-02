@@ -25,7 +25,7 @@ Tang, gains 1 gramm when fed and can suffer short-term memory loss.
 
 Kong, gains 2 grams when fed.
 
-#### Aquarium
+#### Fish Tank
 
 - It has an `addFish()` method where you can add fish to the aquarium.
 
