@@ -2,6 +2,8 @@ package test;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import main.Clown;
 import main.Fish;
@@ -70,6 +72,20 @@ public class AppTest {
         tank.addFish(new Carp("Fishy", 1, ""));
         tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
         assertEquals(1, tank.getNumberOfFish());
+    }
+
+    @Test
+    public void testTreasureChestLidStatuses(){
+        TreasureChest chest = new TreasureChest(TreasureChest.Status.OPEN);
+        assertFalse(chest.isClosed());
+        chest.openLid();
+        assertFalse(chest.isClosed());
+        chest.closeLid();
+        assertTrue(chest.isClosed());
+        chest.closeLid();
+        assertTrue(chest.isClosed());
+        chest.openLid();
+        assertFalse(chest.isClosed());
     }
 
     @Test
