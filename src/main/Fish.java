@@ -17,7 +17,12 @@ public abstract class Fish {
     public double getWeightInGram() {
         return weightInGram;
     }
+    public void setWeightInGram(double weightInGram){
+        this.weightInGram = weightInGram;
+    }
     public String getColor() {
         return color;
     }
+
+    public abstract void feed();
 }

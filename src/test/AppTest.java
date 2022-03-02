@@ -40,11 +40,24 @@ public class AppTest {
     @Test
     public void removeBigFishFromTank(){
         FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
-        tank.addFish(new Carp("big1", BIG_FISH, "c1"));
-        tank.addFish(new Carp("small", 2, "c2"));
-        tank.addFish(new Carp("big2", BIG_FISH+1, "c3"));
+        tank.addFish(new Carp("big1", BIG_FISH, ""));
+        tank.addFish(new Carp("small", 2, ""));
+        tank.addFish(new Carp("big2", BIG_FISH+1, ""));
         assertEquals(3, tank.getNumberOfFish());
         tank.removeFish();
         assertEquals(1, tank.getNumberOfFish());
-    }    
+    }
+
+    @Test
+    public void feedFishInTankTwoTimesSoOneFishBecomesBig(){
+        FishTank tank = new FishTank(TANK_CAPACITY, 11);
+        tank.addFish(new Carp("small1", 1, ""));
+        tank.addFish(new Carp("small2", 2, ""));
+        tank.feed();
+        tank.removeFish();
+        assertEquals(2, tank.getNumberOfFish());
+        tank.feed();
+        tank.removeFish();
+        assertEquals(1, tank.getNumberOfFish());
+    }   
 }

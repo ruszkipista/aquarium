@@ -5,36 +5,42 @@ import java.util.Iterator;
 import java.util.List;
 
 public class FishTank {
-   private int volumeInLiter;
-   private double bigFishLimitInGram;
+    private int volumeInLiter;
+    private double bigFishLimitInGram;
 
-   private List<Fish> fishes = new ArrayList<>();
-   
-   public FishTank(int volumeInLiter, double bigFishLimitInGram){
-       this.volumeInLiter = volumeInLiter;
-       this.bigFishLimitInGram = bigFishLimitInGram;
-   }
+    private List<Fish> fishes = new ArrayList<>();
 
-   public int getVolumeInLiter() {
-       return this.volumeInLiter;
-   }
-   public double getBigFishLimitInGram(){
-       return this.bigFishLimitInGram;
-   }
+    public FishTank(int volumeInLiter, double bigFishLimitInGram){
+        this.volumeInLiter = volumeInLiter;
+        this.bigFishLimitInGram = bigFishLimitInGram;
+    }
 
-   public void addFish(Fish fish){
-       this.fishes.add(fish);
-   }
+    public int getVolumeInLiter() {
+        return this.volumeInLiter;
+    }
+    public double getBigFishLimitInGram(){
+        return this.bigFishLimitInGram;
+    }
 
-   public int getNumberOfFish(){
-       return this.fishes.size();
-   }
+    public void addFish(Fish fish){
+        this.fishes.add(fish);
+    }
 
-   public void removeFish(){
+    public int getNumberOfFish(){
+        return this.fishes.size();
+    }
+
+    public void removeFish(){
         for (Iterator<Fish> iterator = this.fishes.iterator(); iterator.hasNext(); ) {
             Fish fish = iterator.next();
             if (fish.getWeightInGram() >= this.bigFishLimitInGram)
                 iterator.remove();
+        }
+    }
+
+    public void feed(){
+        for (Fish fish : this.fishes){
+            fish.feed();
         }
     }
 }
