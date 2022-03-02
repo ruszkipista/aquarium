@@ -26,14 +26,25 @@ public class FishTank {
         this.content.add(fish);
     }
 
+    public void addDecoration(Tankable obj){
+        this.content.add(obj);
+    }
+
     public int getNumberOfFish(){
-        return this.content.size();
+        int numberOfFish = 0;
+        for (Tankable item : this.content)
+            if (isFish(item)) numberOfFish++;
+        return numberOfFish;
+    }
+
+    private boolean isFish(Tankable item){
+        return Fish.class.isInstance(item);
     }
 
     public void removeFish(){
         for (Iterator<Tankable> iterator = this.content.iterator(); iterator.hasNext(); ) {
             Tankable item = iterator.next();
-            if (Fish.class.isInstance(item))
+            if (isFish(item))
                 if (((Fish)item).getWeightInGram() >= this.bigFishLimitInGram)
                     iterator.remove();
         }

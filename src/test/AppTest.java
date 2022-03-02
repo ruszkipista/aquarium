@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import main.Fish;
 import main.FishTank;
+import main.TreasureChest;
 
 public class AppTest {
     int TANK_CAPACITY = 240;
@@ -59,5 +60,13 @@ public class AppTest {
         tank.feed();
         tank.removeFish();
         assertEquals(1, tank.getNumberOfFish());
-    }   
+    }
+
+    @Test
+    public void addFishAndNonFishToTank(){
+        FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
+        tank.addFish(new Carp("Fishy", 1, ""));
+        tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
+        assertEquals(1, tank.getNumberOfFish());
+    }  
 }
