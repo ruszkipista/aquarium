@@ -9,6 +9,7 @@ import main.Clown;
 import main.Fish;
 import main.FishTank;
 import main.Kong;
+import main.Tang;
 import main.TreasureChest;
 
 public class AppTest {
@@ -119,5 +120,16 @@ public class AppTest {
         clown.feed();
         assertEquals("Clownfish, weight: 4, color: orange with white stripes",
                       clown.status());
+    }
+
+    @Test
+    public void testTangWeightGainAfterTwoFeeding(){
+        Tang tang = new Tang("Tangfish", 5, "blue", true);
+        assertEquals(5, tang.getWeightInGram(), 0);
+        tang.feed();
+        assertEquals(6, tang.getWeightInGram(), 0);
+        tang.feed();
+        assertEquals("Tangfish, weight: 7, color: blue, short-term memory loss: true",
+                      tang.status());
     }
 }
