@@ -1,6 +1,6 @@
 package main;
 
-public abstract class Fish {
+public abstract class Fish implements Feedable {
     private String name;
     private double weightInGram;
     private String color;
@@ -24,5 +24,4 @@ public abstract class Fish {
         return color;
     }
 
-    public abstract void feed();
 }
