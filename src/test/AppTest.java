@@ -68,5 +68,17 @@ public class AppTest {
         tank.addFish(new Carp("Fishy", 1, ""));
         tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
         assertEquals(1, tank.getNumberOfFish());
-    }  
+    }
+
+    @Test
+    public void addFishAndTreasureChestToTankAndGetStatus(){
+        FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
+        tank.addFish(new Carp("Small", 1, "red"));
+        tank.addFish(new Carp("Big",  14, "blue"));
+        tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
+        assertEquals("fish name: Small, weight: 1\n"
+                    +"fish name: Big, weight: 14\n"
+                    +"Treasure Chest - the lid is open\n",
+                     tank.getStatus());
+    }
 }

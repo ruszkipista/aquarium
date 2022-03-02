@@ -55,4 +55,11 @@ public class FishTank {
             if (Feedable.class.isInstance(item))
                 ((Feedable)item).feed();
     }
+
+    public String getStatus(){
+        String status="";
+        for (Tankable item : this.content)
+            status += item.status() + "\n";
+        return status;
+    }
 }
