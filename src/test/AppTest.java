@@ -20,4 +20,13 @@ public class AppTest {
         assertEquals(1, fish.getWeightInGram(), 0);
         assertEquals("silver", fish.getColor());
     }
+
+    @Test
+    public void addOneFishToTank(){
+        FishTank tank = new FishTank(240);
+        assertEquals(0, tank.getNumberOfFish());
+        Fish fish = new Carp("Pontyi", 1, "silver");
+        tank.addFish(fish);
+        assertEquals(1, tank.getNumberOfFish());
+    }
 }
