@@ -76,8 +76,8 @@ public class AppTest {
         tank.addFish(new Carp("Small", 1, "red"));
         tank.addFish(new Carp("Big",  14, "blue"));
         tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
-        assertEquals("fish name: Small, weight: 1\n"
-                    +"fish name: Big, weight: 14\n"
+        assertEquals("Small, weight: 1, color: red\n"
+                    +"Big, weight: 14, color: blue\n"
                     +"Treasure Chest - the lid is open\n",
                      tank.getStatus());
     }
