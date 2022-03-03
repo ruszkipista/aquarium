@@ -22,15 +22,22 @@ public class FishTank {
         return this.bigFishLimitInGram;
     }
 
-    public void addWater(Water water){
+    public void addWater(Water water) throws WaterOverflowException{
+        double waterContent = 0.0;
         boolean foundWater = false;
         for (Tankable item : content)
             if (Water.class.isInstance(item)) {
                 foundWater = true;
                 ((Water)item).add(water);
+                waterContent += ((Water)item).getVolumeInLiter();
             }
-        if (!foundWater)
+        if (!foundWater){
             content.add(water);
+            waterContent = water.getVolumeInLiter();
+        }
+        if (waterContent > this.volumeInLiter)
+            throw new WaterOverflowException("Water poured into tank has overflown by "
+                                            +(waterContent-this.volumeInLiter)+" Liter");
     }
 
     public double getWaterContentInLiter(){

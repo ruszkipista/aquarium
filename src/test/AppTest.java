@@ -12,6 +12,7 @@ import main.Kong;
 import main.Tang;
 import main.TreasureChest;
 import main.Water;
+import main.WaterOverflowException;
 
 public class AppTest {
     int TANK_CAPACITY = 240;
@@ -24,7 +25,7 @@ public class AppTest {
         assertEquals(BIG_FISH, tank.getBigFishLimitInGram(), 0);
     }
 
-    @Test
+    @Test(expected = WaterOverflowException.class)
     public void addWaterToTank(){
         FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
         tank.addWater(new Water(100));
@@ -32,6 +33,8 @@ public class AppTest {
         tank.addWater(new Water(120));
         assertEquals(220, tank.getWaterContentInLiter(), 0);
         assertEquals("Water: 220.0 Liter\n", tank.getStatus());
+        // this addition goes over the tank's water capacity
+        tank.addWater(new Water(30));
     }
 
     @Test
