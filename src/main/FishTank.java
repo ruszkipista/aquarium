@@ -22,6 +22,25 @@ public class FishTank {
         return this.bigFishLimitInGram;
     }
 
+    public void addWater(Water water){
+        boolean foundWater = false;
+        for (Tankable item : content)
+            if (Water.class.isInstance(item)) {
+                foundWater = true;
+                ((Water)item).add(water);
+            }
+        if (!foundWater)
+            content.add(water);
+    }
+
+    public double getWaterContentInLiter(){
+        double waterContent = 0.0;
+        for (Tankable item : content)
+            if (Water.class.isInstance(item)) 
+                waterContent += ((Water)item).getVolumeInLiter();
+        return waterContent;
+    }
+
     public void addFish(Fish fish){
         this.content.add(fish);
     }
@@ -33,18 +52,14 @@ public class FishTank {
     public int getNumberOfFish(){
         int numberOfFish = 0;
         for (Tankable item : content)
-            if (isFish(item)) numberOfFish++;
+            if (Fish.class.isInstance(item)) numberOfFish++;
         return numberOfFish;
-    }
-
-    private boolean isFish(Tankable item){
-        return Fish.class.isInstance(item);
     }
 
     public void removeFish(){
         for (Iterator<Tankable> iterator = content.iterator(); iterator.hasNext(); ) {
             Tankable item = iterator.next();
-            if (isFish(item))
+            if (Fish.class.isInstance(item))
                 if (((Fish)item).getWeightInGram() >= bigFishLimitInGram)
                     iterator.remove();
         }

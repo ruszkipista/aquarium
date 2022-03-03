@@ -3,6 +3,7 @@ package main;
 public class Aquarium {
     public static void main(String[] args) throws Exception {
         FishTank tank = new FishTank(240, 11);
+        tank.addWater(new Water(220));
         tank.addFish(new Clown("Nemo",    7, "orange", "white"));
         tank.addFish(new Tang("Dory",     5, "blue", true));
         tank.addFish(new Kong("Bubbles", 10, "yellow"));

@@ -11,6 +11,7 @@ import main.FishTank;
 import main.Kong;
 import main.Tang;
 import main.TreasureChest;
+import main.Water;
 
 public class AppTest {
     int TANK_CAPACITY = 240;
@@ -24,6 +25,16 @@ public class AppTest {
     }
 
     @Test
+    public void addWaterToTank(){
+        FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
+        tank.addWater(new Water(100));
+        assertEquals(100, tank.getWaterContentInLiter(), 0);
+        tank.addWater(new Water(120));
+        assertEquals(220, tank.getWaterContentInLiter(), 0);
+        assertEquals("Water: 220.0 Liter\n", tank.getStatus());
+    }
+
+    @Test
     public void createConcreteFish(){
         Fish fish = new Carp("Pontyi", 1, "silver");
         assertEquals("Pontyi", fish.getName());
@@ -34,6 +45,7 @@ public class AppTest {
     @Test
     public void addFishToTank(){
         FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
+        tank.addWater(new Water(220));
         assertEquals(0, tank.getNumberOfFish());
         Fish fish1 = new Carp("Pontyi", 1, "silver");
         tank.addFish(fish1);
@@ -46,6 +58,7 @@ public class AppTest {
     @Test
     public void removeBigFishFromTank(){
         FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
+        tank.addWater(new Water(220));
         tank.addFish(new Carp("big1", BIG_FISH, ""));
         tank.addFish(new Carp("small", 2, ""));
         tank.addFish(new Carp("big2", BIG_FISH+1, ""));
@@ -57,6 +70,7 @@ public class AppTest {
     @Test
     public void feedFishInTankTwoTimesSoOneFishBecomesBig(){
         FishTank tank = new FishTank(TANK_CAPACITY, 11);
+        tank.addWater(new Water(220));
         tank.addFish(new Carp("small1", 1, ""));
         tank.addFish(new Carp("small2", 2, ""));
         tank.feed();
@@ -70,6 +84,7 @@ public class AppTest {
     @Test
     public void addFishAndNonFishToTank(){
         FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
+        tank.addWater(new Water(220));
         tank.addFish(new Carp("Fishy", 1, ""));
         tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
         assertEquals(1, tank.getNumberOfFish());
@@ -92,10 +107,12 @@ public class AppTest {
     @Test
     public void addFishAndTreasureChestToTankAndGetStatus(){
         FishTank tank = new FishTank(TANK_CAPACITY, BIG_FISH);
+        tank.addWater(new Water(220));
         tank.addFish(new Carp("Small", 1, "red"));
         tank.addFish(new Carp("Big",  14, "blue"));
         tank.addDecoration(new TreasureChest(TreasureChest.Status.OPEN));
-        assertEquals("Small, weight: 1, color: red\n"
+        assertEquals("Water: 220.0 Liter\n"
+                    +"Small, weight: 1, color: red\n"
                     +"Big, weight: 14, color: blue\n"
                     +"Treasure Chest - its lid is open\n",
                      tank.getStatus());
