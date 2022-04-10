@@ -1,5 +1,4 @@
 # Aquarium
-## a Morgan Stanley Java Academy Level Test
 
 Model of a simple aquarium where we can take care of our fish.
 
